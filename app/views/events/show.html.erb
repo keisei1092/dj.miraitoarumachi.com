@@ -1,0 +1,35 @@
+<h1><%= @event.name %></h1>
+<ul>
+  <% @volumes.each do |v| %>
+    <li><%= link_to "Vol.#{v.number}", volume_path(v) %></li>
+  <% end %>
+</ul>
+<%= form_for(@volume) do |f| %>
+  <%= hidden_field_tag :event_id, @event.id %>
+  <div class="form-group">
+    <label for="volume_number">新しい日時を追加</label>
+    <%= f.text_field :number, :class => "form-control", :placeholder => "VOL.xx 半角数字で (例) VOL.44→ 44" %>
+  </div>
+  <div class="form-group">
+    <%= f.datetime_select :open, :class => "form-control", :use_month_numbers => true, :minute_step => 5 %>
+  </div>
+  <div class="form-group" style="overflow: hidden">
+    <%= button_tag( class: "btn btn-primary btn-sm pull-right") do %>
+      <%= content_tag :span, " 追加", class: "glyphicon glyphicon-ok" %>
+    <% end %>
+  </div>
+<% end %>
+<h2>このイベントに関する最近のツイート</h2>
+<p>
+  いつか実装します
+</p>
+<p style="overflow: hidden">
+  <%= link_to edit_event_path(@event), class: "btn btn-default pull-right" do %>
+    <i class="glyphicon glyphicon-pencil"> 編集</i>
+  <% end %>
+</p>
+<p class="text-right">
+  <%= link_to events_path, class: "black large" do %>
+    <i class="glyphicon glyphicon-chevron-left"></i>
+  <% end %>
+</p>

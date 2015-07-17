@@ -1,0 +1,16 @@
+<h1><%= @event.name %> Vol.<%= @volume.number %></h1>
+<p><%= @volume.open.strftime('%Y/%m/%d (%a) %H:%M') %> Open</p>
+<p style="overflow: hidden">
+  <%= link_to edit_volume_path(@volume), class: "btn btn-default pull-right" do %>
+    <i class="glyphicon glyphicon-pencil"> 編集</i>
+  <% end %>
+</p>
+<h2>セットリスト</h2>
+<%= @setlist.each do |s| %>
+  <%= raw($twitter.oembed("#{s.twitter_status_id}").html) %>
+<% end %>
+<p class="text-right">
+  <%= link_to events_path, class: "black large" do %>
+    <i class="glyphicon glyphicon-chevron-left"></i>
+  <% end %>
+</p>

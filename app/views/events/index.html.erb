@@ -1,0 +1,11 @@
+<h1>イベント一覧</h1>
+<ul>
+  <% @events.each do |event| %>
+    <li><%= link_to event.name, event %></li>
+  <% end %>
+</ul>
+<p class="text-right">
+<%= link_to new_event_path, class: "btn btn-default text-right" do %>
+  <i class="glyphicon glyphicon-plus"> 追加</i>
+<% end %>
+</p>
